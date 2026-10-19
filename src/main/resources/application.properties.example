@@ -1,0 +1,5 @@
+
+spring.datasource.url=jdbc:mysql://localhost:3306/gameflix
+spring.datasource.username=gameflix_app
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+app.jwt.secret=REPLACE_WITH_A_RANDOM_SECRET_AT_LEAST_32_CHARACTERS_LONG
