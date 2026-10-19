@@ -41,7 +41,7 @@ The email column is unique to prevent duplicate accounts. The password column is
 
 The application uses BCrypt with strength 10. I chose this setting because it meets the course requirement and provides strong password protection without making login testing too slow. Passwords are encoded before they are stored.
 
---- DDL choice ---
+--- DDL Choice ---
 
 spring.jpa.hibernate.ddl-auto=update
 
@@ -54,6 +54,7 @@ JWTs remain valid for 60 minutes. This provides enough time for normal testing w
 --- Test Evidence ---
 
 I used Postman to test:
+
 1. Successful registration - 201 Created
 2. Duplicate email - 409 Conflict
 3. Successful login - 200 OK
@@ -75,15 +76,15 @@ My Module 3 design used a Member Service for accounts and profiles. This project
 
 I used ChatGPT while creating and testing this project. I reviewed its suggestions before deciding what to keep or change.
 
-1. ChatGPT suggested organizing the project with separate controller, service, repository, and request classes. I kept this structure because it clearly separated the responsibilities of each part of the application.
-2. For the Spring Security configuration, ChatGPT suggested using a lambda-based SecurityFilterChain. I kept this approach because it works with Spring Security 6 and matches the concepts covered in the course materials.
-3. ChatGPT originally suggested checking for an existing email through the application before registering a member. I changed this approach by also using a unique database constraint because the database should provide the final protection against duplicate registrations.
-4. AI suggested storing the MySQL password and JWT secret in a local properties file. I kept the separate configuration file but excluded it from Git because publishing these private values would create a security risk.
-5. ChatGPT helped organize the README around the required assignment sections. I kept the suggested headings because they made the setup instructions, security choices, test evidence, and AI-use details easier to find.
-6. To make sure I covered the required testing, I asked ChatGPT to create a checklist of the Postman tests. I kept the checklist because it helped me verify the successful and failed requests for all three endpoints.
-7. While troubleshooting the application, I provided ChatGPT with the errors I received. Its responses helped me identify incorrect MySQL credentials and a JWT secret that was too short. I made the recommended corrections and reran the application to confirm that they worked.
-8. When I encountered generated blocks of code that I did not fully understand, I asked ChatGPT to explain them in simpler terms. I compared the explanations with the course materials and kept the code when it used concepts we had covered. I left out anything that introduced unfamiliar or unnecessary concepts.
-9. ChatGPT helped me write and understand the MySQL commands used to create the GameFlix database, users table, and gameflix_app database user. I compared the suggested SQL with the assignment requirements and changed the table fields to match the GameFlix design. I also kept the unique email constraint because the assignment requires duplicate registrations to be prevented at the database level.
+1. To organize the project, ChatGPT recommended using separate controller, service, repository, and request classes. I kept this structure because it clearly separated the responsibilities of each part of the application.
+2. For Spring Security, the AI provided a lambda-based SecurityFilterChain. This approach was kept because it works with Spring Security 6 and matches the concepts covered in the course materials.
+3. An initial suggestion was to check for an existing email through the application before registering a member. I adjusted this by also adding a unique database constraint, since the database should provide the final protection against duplicate registrations.
+4. The MySQL password and JWT secret needed to be stored outside the main properties file. Following ChatGPT’s recommendation, I placed them in a local properties file and excluded that file from Git to prevent private values from being published.
+5. When working on the README, ChatGPT helped arrange the information into the sections required by the assignment. I kept the suggested headings because they made the setup instructions, security choices, test evidence, and AI-use details easier to locate.
+6. To confirm that I completed all required testing, I requested a checklist of the Postman tests. The checklist was useful because it covered the successful and failed requests for all three endpoints.
+7. During troubleshooting, I shared the application errors with ChatGPT. Its explanations helped identify incorrect MySQL credentials and a JWT secret that was too short. After making the suggested corrections, I reran the application to verify that the errors were resolved.
+8. Some generated blocks of code were difficult for me to understand at first, so I asked for simpler explanations. I then compared those explanations with the course materials, kept code that used covered concepts, and left out anything unfamiliar or unnecessary.
+9. ChatGPT also assisted with the MySQL commands for creating the GameFlix database, users table, and gameflix_app database user. After comparing the SQL with the assignment requirements, I changed the table fields to match the GameFlix design and kept the unique email constraint because duplicate registrations must be prevented at the database level.
 
  `application.properties.example` contains:
 
